@@ -4,4 +4,4 @@ author Satoshi Sahara
 email  sahara.satoshi@gmail.com
 date   2015-09-24 beta
 desc   Set a %PLACE_HOLDER% in the page to identify HTML element to be replaced by JavaScript when the page loaded. You may define the replacement in the conf/userscript.js file.
-url    
+url    https://github.com/ssahara/dw-plugin-dyncontent
