@@ -30,11 +30,10 @@ class syntax_plugin_dyncontent extends DokuWiki_Syntax_Plugin {
     }
 
     public function render($format, Doku_Renderer $renderer, $data) {
-        global $INFO;
         list($state, $match) = $data;
-        $renderer->doc .= '<span class="plugin_dyncontent">';
-        $renderer->doc .= trim(substr($match, 4, -3));
-        $renderer->doc .= '</span>';
+        $content = trim(substr($match, 4, -3));
+        $class = 'plugin_dyncontent '.substr($content, 1, -1);
+        $renderer->doc .= '<span class="'.$class.'">'.$content.'</span>';
         return true;
     }
 
