@@ -5,26 +5,30 @@
  * @author Satoshi Sahara <sahara.satoshi@gmail.com>
  */
 
+// Global variable, defined in conf/userscript.js
+//  var DYN_CONTENTS ={ '%foo%': 'bar' };
+if (DYN_CONTENTS == undefined) {
+    var DYN_CONTENTS = [];
+}
+
 jQuery(function() {
-    if (typeof JSINFO.server == 'undefined') return;
-
-    var objReplacement = {
-        "%REMOTE_ADDR%" : JSINFO.server.REMOTE_ADDR,
-        "%SERVER_ADDR%" : JSINFO.server.SERVER_ADDR
-    };
-    for(var key in objReplacement) {
-        var selector = 'span.plugin_dyncontent:contains("' + key + '")';
-        jQuery(selector).replaceWith(objReplacement[key]);
-    }
-
-/*
-    jQuery('span.plugin_placeholder:contains("%REMOTE_ADDR%")').replaceWith(
-        JSINFO.server.REMOTE_ADDR
+    jQuery.post(
+        DOKU_BASE + 'lib/exe/ajax.php',
+        {
+            call: 'plugin_dyncontent',
+            name: 'local'
+        },
+        function(data) {
+            for (var key in data) {
+                DYN_CONTENTS[key] = data[key];
+            }
+            for (var key in DYN_CONTENTS) {
+                var selector = 'span.plugin_dyncontent:contains("' + key + '")';
+                jQuery(selector).replaceWith(DYN_CONTENTS[key]);
+            }
+        },
+        'json'
     );
-    jQuery('span.plugin_placeholder:contains("%SERVER_ADDR%")').replaceWith(
-        JSINFO.server.SERVER_ADDR
-    );
-*/
 });
 
 
