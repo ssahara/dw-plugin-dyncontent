@@ -6,9 +6,9 @@
  */
 
 // Global variable, defined in conf/userscript.js
-//  var DYN_CONTENTS ={ '%foo%': 'bar' };
+//  var DYN_CONTENTS ={ '%FOO%': 'bar' };
 if (DYN_CONTENTS == undefined) {
-    var DYN_CONTENTS = [];
+    var DYN_CONTENTS = {};
 }
 
 jQuery(function() {
@@ -30,6 +30,4 @@ jQuery(function() {
         'json'
     );
 });
-
-
 
