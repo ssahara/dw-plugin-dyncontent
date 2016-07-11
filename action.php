@@ -12,21 +12,26 @@ class action_plugin_dyncontent extends DokuWiki_Action_Plugin {
 
     // register hook
     public function register(Doku_Event_Handler $controller) {
-        $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, '_exportToJSINFO');
+        $controller->register_hook('AJAX_CALL_UNKNOWN', 'BEFORE', $this, '_ajax_call');
     }
 
     /**
-     * export $_SERVER to JSINFO
+     * Ajax handler
      */
-    public function _exportToJSINFO(Doku_Event $event, $param) {
-        global $JSINFO;
-        //$JSINFO['server'] = $_SERVER;
-        $JSINFO['server'] = array(
-            'SERVER_NAME' => $_SERVER['SERVER_NAME'],
-            'SERVER_ADDR' => $_SERVER['SERVER_ADDR'],
-            'REMOTE_ADDR' => $_SERVER['REMOTE_ADDR'],
-            'REMOTE_USER' => $_SERVER['REMOTE_USER'],
-        );
-    }
+    function _ajax_call(Doku_Event $event, $param) {
+        if ($event->data !== 'plugin_dyncontent') return;
 
+        $event->stopPropagation();
+        $event->preventDefault();
+
+        $json = new JSON();
+
+        $data = array(
+            '%SERVER_ADDR%' => $_SERVER['SERVER_ADDR'],
+            '%REMOTE_ADDR%' => $_SERVER['REMOTE_ADDR'],
+        );
+
+        header('Content-Type: application/json');
+        echo $json->encode($data);
+    }
 }
