@@ -1,10 +1,11 @@
 Text Variable plugin for DokuWiki
 ===================================
 
-Set a `%PLACE_HOLDER%` in the page to identify HTML element to be replaced by JavaScript when the page loaded. The name of place holder must consist only capital letters (A-Z) and '_'.
+**Text variables** provide a way to insert text that can change depending on various factors, such as SERVER_ADDR and REMOTE_ADDR. They are replaced by JavaScript when the page loaded.
+The name of text variable must consist only capital letters (A-Z) and '_'.
 
 ```
-  <!--%PLACE_HOLDER%-->
+  <!--%TEXT_VAR%-->
 ```
 
 You may define the replacement in the `conf/userscript.js` file. Please refer to DokuWiki development manual on [JavaScript](https://www.dokuwiki.org/devel:javascript).
@@ -25,4 +26,4 @@ Predefined Place Holders
 ----
 Licensed under the GNU Public License (GPL) version 2
 
-(c) 2015 Satoshi Sahara \<sahara.satoshi@gmail.com>
+(c) 2015-2016 Satoshi Sahara \<sahara.satoshi@gmail.com>
