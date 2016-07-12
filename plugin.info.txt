@@ -2,6 +2,6 @@ base  textvar
 name  Text Variable plugin for DokuWiki
 author Satoshi Sahara
 email  sahara.satoshi@gmail.com
-date   2016-07-11 beta
-desc   Set a %PLACE_HOLDER% in the page to identify HTML element to be replaced by JavaScript when the page loaded. You may define the replacement in the conf/userscript.js file as global object var TEXT_VARIABLES={%FOO%':'bar'};
+date   2016-07-12 beta
+desc   Text variables provide a way to insert text that can change depending on various factors, such as SERVER_ADDR and REMOTE_ADDR. They are replaced by JavaScript when the page loaded. You may define the replacement in the conf/userscript.js file as global object var TEXT_VARIABLES={%FOO%':'bar'};
 url    https://github.com/ssahara/dw-plugin-textvariable

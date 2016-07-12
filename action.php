@@ -20,7 +20,6 @@ class action_plugin_textvar extends DokuWiki_Action_Plugin {
      */
     function _ajax_call(Doku_Event $event, $param) {
         if ($event->data !== 'plugin_textvar') return;
-
         $event->stopPropagation();
         $event->preventDefault();
 
