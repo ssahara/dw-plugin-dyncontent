@@ -1,6 +1,6 @@
 <?php
 /**
- * DokuWiki plugin DynContent; Action component
+ * Text Variable plugin for DokuWiki; Action component
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Sahara Satoshi <sahara.satoshi@gmail.com>
@@ -8,7 +8,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-class action_plugin_dyncontent extends DokuWiki_Action_Plugin {
+class action_plugin_textvar extends DokuWiki_Action_Plugin {
 
     // register hook
     public function register(Doku_Event_Handler $controller) {
@@ -19,7 +19,7 @@ class action_plugin_dyncontent extends DokuWiki_Action_Plugin {
      * Ajax handler
      */
     function _ajax_call(Doku_Event $event, $param) {
-        if ($event->data !== 'plugin_dyncontent') return;
+        if ($event->data !== 'plugin_textvar') return;
 
         $event->stopPropagation();
         $event->preventDefault();

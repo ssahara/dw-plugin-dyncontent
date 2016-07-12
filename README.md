@@ -1,4 +1,4 @@
-Dynamic Content plugin for DokuWiki
+Text Variable plugin for DokuWiki
 ===================================
 
 Set a `%PLACE_HOLDER%` in the page to identify HTML element to be replaced by JavaScript when the page loaded. The name of place holder must consist only capital letters (A-Z) and '_'.
@@ -11,7 +11,7 @@ You may define the replacement in the `conf/userscript.js` file. Please refer to
 
 ```
 jQuery(function() {
-    jQuery('span.plugin_dyncontent:contains("%PLACE_HOLDER%")').replaceWith(
+    jQuery('span.plugin_textvar:contains("%PLACE_HOLDER%")').replaceWith(
         'replaced HTML content by JavaScript'
     );
 });

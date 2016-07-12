@@ -1,7 +1,7 @@
-base  dyncontent
-name  Dynamic content plugin
+base  textvar
+name  Text Variable plugin for DokuWiki
 author Satoshi Sahara
 email  sahara.satoshi@gmail.com
 date   2016-07-11 beta
-desc   Set a %PLACE_HOLDER% in the page to identify HTML element to be replaced by JavaScript when the page loaded. You may define the replacement in the conf/userscript.js file as global object var DYN_CONTENTS={%FOO%':'bar'};
-url    https://github.com/ssahara/dw-plugin-dyncontent
+desc   Set a %PLACE_HOLDER% in the page to identify HTML element to be replaced by JavaScript when the page loaded. You may define the replacement in the conf/userscript.js file as global object var TEXT_VARIABLES={%FOO%':'bar'};
+url    https://github.com/ssahara/dw-plugin-textvariable
