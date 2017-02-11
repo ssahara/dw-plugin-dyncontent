@@ -8,10 +8,10 @@
 // must be run within Dokuwiki
 if (!defined('DOKU_INC')) die();
 
-class syntax_plugin_textvar extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_textvar_deferred extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
-    protected $special_pattern = '<!-- ?%[A-Z][A-Z_-]*?% ?-->';  // eg. <!--%REMOTE_ADDR%-->
+    protected $pattern = '<!-- ?%[A-Z][A-Z_-]*?% ?-->';  // eg. <!--%REMOTE_ADDR%-->
 
     function __construct() {
         $this->mode = substr(get_class($this), 7); // drop 'syntax_' from class name
@@ -22,7 +22,7 @@ class syntax_plugin_textvar extends DokuWiki_Syntax_Plugin {
     public function getSort() { return 990; }
 
     public function connectTo($mode) {
-        $this->Lexer->addSpecialPattern($this->special_pattern, $mode, $this->mode);
+        $this->Lexer->addSpecialPattern($this->pattern, $mode, $this->mode);
     }
 
     public function handle($match, $state, $pos, Doku_Handler $handler) {
