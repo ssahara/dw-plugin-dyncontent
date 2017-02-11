@@ -26,4 +26,4 @@ Predefined Place Holders
 ----
 Licensed under the GNU Public License (GPL) version 2
 
-(c) 2015-2016 Satoshi Sahara \<sahara.satoshi@gmail.com>
+(c) 2015-2017 Satoshi Sahara \<sahara.satoshi@gmail.com>
