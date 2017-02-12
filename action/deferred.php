@@ -8,7 +8,7 @@
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
 
-class action_plugin_textvar extends DokuWiki_Action_Plugin {
+class action_plugin_textvar_deferred extends DokuWiki_Action_Plugin {
 
     // register hook
     public function register(Doku_Event_Handler $controller) {
