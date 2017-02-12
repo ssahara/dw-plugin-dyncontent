@@ -67,7 +67,9 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
                     }
                     break;
                 default:
-                    $out = '⯑'.htmlspecialchars($data[0]);
+                    $out = '<code style="color:darkred;">⯑%SYSINFO:';
+                    $out.= htmlspecialchars(strtoupper($data[0]));
+                    $out.= '%</code>';
             }
             $renderer->doc .= $out;
             return true;
