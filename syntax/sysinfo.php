@@ -34,7 +34,7 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
      */
     function handle($match, $state, $pos, Doku_Handler $handler) {
         $match = substr($match,9,-1); //strip %SYSINFO: from start and % from end
-        return array(strtolower($match));
+        return array(strtoupper($match));
     }
 
     /**
@@ -45,13 +45,13 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
 
             //handle various info stuff
             switch ($data[0]){
-                case 'os':
+                case 'OS':
                     $out = php_uname('s').' '.php_uname('r');
                     break;
-                case 'php_version':
+                case 'PHP_VERSION':
                     $out = phpversion();
                     break;
-                case 'gd_version':
+                case 'GD_VERSION':
                     if (extension_loaded('gd')) {
                         $gdinfo = gd_info();
                         $out = $gdinfo['GD Version'];
@@ -59,7 +59,7 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
                         $out = 'not supported';
                     }
                     break;
-                case 'mb_internal_encoding':
+                case 'MB_INTERNAL_ENCODING':
                     if (extension_loaded('mbstring')) {
                         $out = mb_get_info('internal_encoding');
                     } else {
@@ -68,7 +68,7 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
                     break;
                 default:
                     $out = '<code style="color:darkred;">⯑%SYSINFO:';
-                    $out.= htmlspecialchars(strtoupper($data[0]));
+                    $out.= htmlspecialchars($data[0]);
                     $out.= '%</code>';
             }
             $renderer->doc .= $out;
