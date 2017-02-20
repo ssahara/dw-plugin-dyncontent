@@ -25,12 +25,10 @@ class action_plugin_textvar_deferred extends DokuWiki_Action_Plugin {
 
         $json = new JSON();
 
-        $data = array(
-            '%SERVER_ADDR%' => $_SERVER['SERVER_ADDR'],
-            '%REMOTE_ADDR%' => $_SERVER['REMOTE_ADDR'],
-        );
+        $map = $this->loadHelper($this->getPluginName());
 
         header('Content-Type: application/json');
-        echo $json->encode($data);
+        echo $json->encode($map->TextVariables);
+
     }
 }
