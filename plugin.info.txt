@@ -2,6 +2,6 @@ base  textvar
 name  Text Variable plugin for DokuWiki
 author Satoshi Sahara
 email  sahara.satoshi@gmail.com
-date   2017-02-23 beta
+date   2017-02-28 beta
 desc   Text variables are fileds or place holders that are replaced later with their definitions in conf/text_variables.conf file.
 url    https://github.com/ssahara/dw-plugin-textvariable

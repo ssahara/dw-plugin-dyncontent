@@ -35,6 +35,7 @@ class helper_plugin_textvar extends DokuWiki_Plugin {
         $this->TextVariables += array(
             '%SERVER_ADDR%' => $_SERVER['SERVER_ADDR'],
             '%REMOTE_ADDR%' => $_SERVER['REMOTE_ADDR'],
+            '%PHP_VERSION%' => phpversion(),
         );
 
     }
