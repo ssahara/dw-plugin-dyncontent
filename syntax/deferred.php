@@ -11,7 +11,7 @@ if (!defined('DOKU_INC')) die();
 class syntax_plugin_textvar_deferred extends DokuWiki_Syntax_Plugin {
 
     protected $mode;
-    protected $pattern = '<!-- ?%[A-Z][A-Z_-]*?% ?-->';  // eg. <!--%REMOTE_ADDR%-->
+    protected $pattern = '<!-- ?%[A-Z][A-Z_0-9-]*?% ?-->';  // eg. <!--%REMOTE_ADDR%-->
 
     function __construct() {
         $this->mode = substr(get_class($this), 7); // drop 'syntax_' from class name
@@ -30,9 +30,9 @@ class syntax_plugin_textvar_deferred extends DokuWiki_Syntax_Plugin {
         // load replacement rules
         $map = $this->loadHelper($this->getPluginName());
 
-        $name = trim(substr($match, 4, -3));
-        if ($map->TextVariables[$name]) {
-            return array($state, $name);
+        $variable = trim(substr($match, 4, -3));
+        if ($map->TextVariables[$variable]) {
+            return array($state, $variable);
         } else {
             return false;
         }
@@ -40,9 +40,9 @@ class syntax_plugin_textvar_deferred extends DokuWiki_Syntax_Plugin {
 
     public function render($format, Doku_Renderer $renderer, $data) {
         if ($format == 'xhtml') {
-            list($state, $name) = $data;
+            list($state, $variable) = $data;
             $renderer->doc .= '<var class="plugin_textvar" title="textVariable">';
-            $renderer->doc .= $name;
+            $renderer->doc .= $variable;
             $renderer->doc .= '</var>';
             return true;
         }
