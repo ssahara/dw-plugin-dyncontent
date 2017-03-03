@@ -33,7 +33,7 @@ class syntax_plugin_textvar_deferred extends DokuWiki_Syntax_Plugin {
         list($state, $match) = $data;
         $content = trim(substr($match, 4, -3));
         $class = 'plugin_textvar '.substr($content, 1, -1);
-        $renderer->doc .= '<span class="'.$class.'">'.$content.'</span>';
+        $renderer->doc .= '<var class="'.$class.'">'.$content.'</var>';
         return true;
     }
 

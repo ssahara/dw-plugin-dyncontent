@@ -23,7 +23,7 @@ jQuery(function() {
                 TEXT_VARIABLES[key] = data[key];
             }
             for (var key in TEXT_VARIABLES) {
-                var selector = 'span.plugin_textvar:contains("' + key + '")';
+                var selector = 'var.plugin_textvar:contains("' + key + '")';
                 jQuery(selector).replaceWith(TEXT_VARIABLES[key]);
             }
         },

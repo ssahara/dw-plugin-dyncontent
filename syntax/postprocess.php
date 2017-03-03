@@ -41,7 +41,7 @@ class syntax_plugin_textvar_postprocess extends DokuWiki_Syntax_Plugin {
      */
     function render($format, Doku_Renderer $renderer, $data) {
         if ($format == 'xhtml'){
-            $renderer->doc .= '<span title="textVariable">'.$data[0].'</span>';
+            $renderer->doc .= '<var title="textVariable">'.$data[0].'</var>';
             return true;
         }
         return false;

@@ -11,8 +11,8 @@ DokuWiki のプラグイン。ソーステキスト中の変数 `%VARIABLES%` �
 
 ##定義済のテキスト変数
 
-    %SERVER_ADDR% Wiki サーバの IP アドレス                    = $_SERVER['REMOTE_ADDR']
-    %REMOTE_ADDR% ページを閲覧しているユーザ側の IP アドレス = $_SERVER['REMOTE_ADDR']
+    %SERVER_ADDR% Wiki サーバの IP アドレス (= $_SERVER['REMOTE_ADDR'])
+    %REMOTE_ADDR% ページを閲覧しているユーザ側の IP アドレス (= $_SERVER['REMOTE_ADDR'])
 
 ##使用例
 
