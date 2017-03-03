@@ -22,7 +22,7 @@ DokuWiki のプラグイン。ソーステキスト中の変数 `%VARIABLES%` �
 Welcome from IP %REMOTE_ADDR%
 ```
 
-sidebar で使用する場合には、 上の例では置換されません。 jQuery で置換させるため、以下のように記述します。
+テキスト変数が未定義の場合に変数名を表示させないようにするには、以下のように記述します。
 
 ```
 Welcome from IP <!--%REMOTE_ADDR%-->
