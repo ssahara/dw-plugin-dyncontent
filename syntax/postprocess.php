@@ -33,15 +33,19 @@ class syntax_plugin_textvar_postprocess extends DokuWiki_Syntax_Plugin {
      * Handle the match
      */
     function handle($match, $state, $pos, Doku_Handler $handler) {
-        return array($match);
+        return array($state, $match);
     }
 
     /**
      * Create output
      */
     function render($format, Doku_Renderer $renderer, $data) {
-        if ($format == 'xhtml'){
-            $renderer->doc .= '<var title="textVariable">'.$data[0].'</var>';
+        if ($format == 'xhtml') {
+
+            list($state, $match) = $data;
+            $renderer->doc .= '<var class="plugin_textvar" title="textVariable">';
+            $renderer->doc .= $match;
+            $renderer->doc .= '</var>';
             return true;
         }
         return false;

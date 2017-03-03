@@ -49,7 +49,7 @@ class action_plugin_textvar_postprocess extends DokuWiki_Action_Plugin {
         $map = $this->loadHelper($this->getPluginName());
 
         foreach ($map->TextVariables as $variable => $replace) {
-            $search = '<var title="textVariable">'.$variable.'</var>';
+            $search = '<var class="plugin_textvar" title="textVariable">'.$variable.'</var>';
 
             $event->data = str_replace($search, $replace, $event->data);
         }
