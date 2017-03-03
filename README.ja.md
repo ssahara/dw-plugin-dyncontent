@@ -19,13 +19,13 @@ DokuWiki のプラグイン。ソーステキスト中の変数 `%VARIABLES%` �
 ページ内で 閲覧者の IP アドレスを表示させる場合には、以下のように記述します。
 
 ```
-    Welcome from IP %REMOTE_ADDR%
+Welcome from IP %REMOTE_ADDR%
 ```
 
 sidebar で使用する場合には、 上の例では置換されません。 jQuery で置換させるため、以下のように記述します。
 
 ```
-  <!--%REMOTE_ADDR%-->
+Welcome from IP <!--%REMOTE_ADDR%-->
 ```
 
 ## 応用編
@@ -34,7 +34,7 @@ You may define the replacement in the `conf/userscript.js` file. Please refer to
 
 ```
 jQuery(function() {
-    jQuery('span.plugin_textvar:contains("%PLACE_HOLDER%")').replaceWith(
+    jQuery('var.plugin_textvar:contains("%PLACE_HOLDER%")').replaceWith(
         'replaced HTML content by JavaScript'
     );
 });

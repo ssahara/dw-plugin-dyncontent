@@ -12,7 +12,7 @@ You may define the replacement in the `conf/userscript.js` file. Please refer to
 
 ```
 jQuery(function() {
-    jQuery('span.plugin_textvar:contains("%PLACE_HOLDER%")').replaceWith(
+    jQuery('var.plugin_textvar:contains("%PLACE_HOLDER%")').replaceWith(
         'replaced HTML content by JavaScript'
     );
 });
