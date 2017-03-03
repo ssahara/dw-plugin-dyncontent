@@ -30,11 +30,14 @@ class syntax_plugin_textvar_deferred extends DokuWiki_Syntax_Plugin {
     }
 
     public function render($format, Doku_Renderer $renderer, $data) {
-        list($state, $match) = $data;
-        $content = trim(substr($match, 4, -3));
-        $class = 'plugin_textvar '.substr($content, 1, -1);
-        $renderer->doc .= '<var class="'.$class.'">'.$content.'</var>';
-        return true;
+        if ($format == 'xhtml') {
+            list($state, $match) = $data;
+            $renderer->doc .= '<var class="plugin_textvar" title="textVariable">';
+            $renderer->doc .= trim(substr($match, 4, -3));
+            $renderer->doc .= '</var>';
+            return true;
+        }
+        return false;
     }
 
 }
