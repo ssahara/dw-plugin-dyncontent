@@ -26,14 +26,23 @@ class syntax_plugin_textvar_deferred extends DokuWiki_Syntax_Plugin {
     }
 
     public function handle($match, $state, $pos, Doku_Handler $handler) {
-        return array($state, $match);
+
+        // load replacement rules
+        $map = $this->loadHelper($this->getPluginName());
+
+        $name = trim(substr($match, 4, -3));
+        if ($map->TextVariables[$name]) {
+            return array($state, $name);
+        } else {
+            return false;
+        }
     }
 
     public function render($format, Doku_Renderer $renderer, $data) {
         if ($format == 'xhtml') {
-            list($state, $match) = $data;
+            list($state, $name) = $data;
             $renderer->doc .= '<var class="plugin_textvar" title="textVariable">';
-            $renderer->doc .= trim(substr($match, 4, -3));
+            $renderer->doc .= $name;
             $renderer->doc .= '</var>';
             return true;
         }
