@@ -5,14 +5,18 @@ Text Variable plugin for DokuWiki
 
 DokuWiki のプラグイン。ソーステキスト中の変数 `%VARIABLES%` を別途定義した内容に置換する仕組みを実現します。	置換は、 DokuWiki サーバがキャッシュされた (X)HTML をクライアントにを送る直前のステージで行われます。 
 
-テキスト変数の名前は、英字大文字とアンダースコアを使用し、両端を`%`で囲みます。テキスト変数の内容は conf/text_variables.conf で設定します。未定義の変数は、そのまま表示されます。
+テキスト変数の名前は、両端を`%`で囲みます。
+英字大文字で始まり、そのほかに数字、アンダースコアを使用できます。
+未定義のテキスト変数は、そのまま表示されます。
 
-
+静的な置換を行う場合には、 テキスト変数とその内容を conf/text_variables.conf で設定します。
 
 ##定義済のテキスト変数
 
     %SERVER_ADDR% Wiki サーバの IP アドレス (= $_SERVER['REMOTE_ADDR'])
     %REMOTE_ADDR% ページを閲覧しているユーザ側の IP アドレス (= $_SERVER['REMOTE_ADDR'])
+    
+    %PHP_VERSION% 稼働中の PHP バージョン
 
 ##使用例
 
@@ -20,12 +24,6 @@ DokuWiki のプラグイン。ソーステキスト中の変数 `%VARIABLES%` �
 
 ```
 Welcome from IP %REMOTE_ADDR%
-```
-
-テキスト変数が未定義の場合に変数名を表示させないようにするには、以下のように記述します。
-
-```
-Welcome from IP <!--%REMOTE_ADDR%-->
 ```
 
 ## 応用編
