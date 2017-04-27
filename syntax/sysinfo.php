@@ -66,6 +66,13 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
                         $out = '⯑no mbstring';
                     }
                     break;
+                case 'OPENSSL':
+                    if (extension_loaded('openssl')) {
+                        $out = OPENSSL_VERSION_TEXT;
+                    } else {
+                        $out = '⯑no openssl extension';
+                    }
+                    break;
                 default:
                     $out = '<code style="color:darkred;">⯑%SYSINFO:';
                     $out.= htmlspecialchars($data[0]);
