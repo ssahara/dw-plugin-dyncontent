@@ -73,6 +73,13 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
                         $out = '⯑no openssl extension';
                     }
                     break;
+                case 'OPCACHE':
+                    if (extension_loaded('Zend OPcache')) {
+                        $out = (empty(ini_get('opcache.enable'))) ? 'disabled' : 'effective';
+                    } else {
+                        $out = 'not available';
+                    }
+                    break;
                 default:
                     $out = '<code style="color:darkred;">⯑%SYSINFO:';
                     $out.= htmlspecialchars($data[0]);
