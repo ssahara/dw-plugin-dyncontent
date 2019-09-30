@@ -7,40 +7,56 @@
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
  */
 // must be run within Dokuwiki
-if(!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die();
 
-class syntax_plugin_textvar_postprocess extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_textvar_postprocess extends DokuWiki_Syntax_Plugin
+{
+    public function getType()
+    {   // Syntax Type
+        return 'substition';
+    }
 
-    protected $mode;
-    protected $pattern = '%[A-Z][A-Z_0-9]*%';
-
-    function getType() { return 'substition'; }
-    function getPType(){ return 'normal'; }
-    function getSort() { return 156; }
-
-    function __construct() {
-        $this->mode = substr(get_class($this), 7); // drop 'syntax_' from class name
+    public function getPType()
+    {   // Paragraph Type
+        return 'normal';
     }
 
     /**
      * Connect pattern to lexer
      */
-    function connectTo($mode) {
+    protected $mode;
+    protected $pattern = '%[A-Z][A-Z_0-9]*%';
+
+    public function preConnect()
+    {
+        // drop 'syntax_' from class name
+        $this->mode = substr(get_class($this), 7);
+    }
+
+    public function connectTo($mode)
+    {
         $this->Lexer->addSpecialPattern($this->pattern, $mode, $this->mode);
+    }
+
+    public function getSort()
+    {   // sort number used to determine priority of this mode
+        return 156;
     }
 
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, Doku_Handler $handler) {
+    public function handle($match, $state, $pos, Doku_Handler $handler)
+    {
         $variable = $match;
-        return array($state, $variable);
+        return $data = array($state, $variable);
     }
 
     /**
      * Create output
      */
-    function render($format, Doku_Renderer $renderer, $data) {
+    public function render($format, Doku_Renderer $renderer, $data)
+    {
         if ($format == 'xhtml') {
 
             list($state, $variable) = $data;

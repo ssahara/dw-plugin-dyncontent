@@ -6,17 +6,17 @@
  * @author     Sahara Satoshi <sahara.satoshi@gmail.com>
  */
 // must be run within Dokuwiki
-if(!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die();
 
-class helper_plugin_textvar extends DokuWiki_Plugin {
-
+class helper_plugin_textvar extends DokuWiki_Plugin
+{
     // store Text Variables definition
     public $TextVariables = NULL;
     public $mapfile;
 
 
-    function __construct() {
-
+    public function __construct()
+    {
         $this->mapfile = DOKU_CONF.'text_variables.conf';
 
         $cache = new cache('##text_variavles##','.conf');
@@ -33,7 +33,8 @@ class helper_plugin_textvar extends DokuWiki_Plugin {
         }
     }
 
-    function __destruct() {
+    public function __destruct()
+    {
         $this->TextVariables = NULL;
     }
 

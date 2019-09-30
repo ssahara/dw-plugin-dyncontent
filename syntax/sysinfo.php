@@ -7,40 +7,56 @@
  * @author     Satoshi Sahara <sahara.satoshi@gmail.com>
  */
 // must be run within Dokuwiki
-if(!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die();
 
-class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin
+{
+    public function getType()
+    {   // Syntax Type
+        return 'substition';
+    }
 
-    protected $mode;
-    protected $pattern = '%SYSINFO:\w+%'; // eg. %SYSINFO:OS%
-
-    function getType() { return 'substition'; }
-    function getPType(){ return 'normal'; }
-    function getSort() { return 155; }
-
-    function __construct() {
-        $this->mode = substr(get_class($this), 7); // drop 'syntax_' from class name
+    public function getPType()
+    {   // Paragraph Type
+        return 'normal';
     }
 
     /**
      * Connect pattern to lexer
      */
-    function connectTo($mode) {
+    protected $mode;
+    protected $pattern = '%SYSINFO:\w+%'; // eg. %SYSINFO:OS%
+
+    public function preConnect()
+    {
+        // drop 'syntax_' from class name
+        $this->mode = substr(get_class($this), 7);
+    }
+
+    public function connectTo($mode)
+    {
         $this->Lexer->addSpecialPattern($this->pattern, $mode, $this->mode);
+    }
+
+    public function getSort()
+    {   // sort number used to determine priority of this mode
+        return 155;
     }
 
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, Doku_Handler $handler) {
+    public function handle($match, $state, $pos, Doku_Handler $handler)
+    {
         $match = substr($match,9,-1); //strip %SYSINFO: from start and % from end
-        return array(strtoupper($match));
+        return $data = array(strtoupper($match));
     }
 
     /**
      * Create output
      */
-    function render($format, Doku_Renderer $renderer, $data) {
+    public function render($format, Doku_Renderer $renderer, $data)
+    {
         if ($format == 'xhtml'){
 
             //handle various info stuff
