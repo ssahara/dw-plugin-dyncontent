@@ -29,8 +29,6 @@ class action_plugin_textvar extends DokuWiki_Action_Plugin
         $event->stopPropagation();
         $event->preventDefault();
 
-        $json = new JSON();
-
         $map = $this->loadHelper($this->getPluginName());
 
         // append non-static variables
@@ -41,7 +39,12 @@ class action_plugin_textvar extends DokuWiki_Action_Plugin
         );
 
         header('Content-Type: application/json');
-        echo $json->encode($map->TextVariables);
+        if (function_exists('json_encode') {
+            echo json_encode($map->TextVariables);
+        } else {
+            $json = new JSON();
+            echo $json->encode($map->TextVariables);
+        }
 
     }
 
