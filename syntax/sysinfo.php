@@ -82,6 +82,13 @@ class syntax_plugin_textvar_sysinfo extends DokuWiki_Syntax_Plugin
                         $out = '⯑no mbstring';
                     }
                     break;
+                case 'INTL':
+                    if (extension_loaded('intl')) {
+                        $out = 'enabled';
+                    } else {
+                        $out = '⯑no ICU INTL extension';
+                    }
+                    break;
                 case 'OPENSSL':
                     if (extension_loaded('openssl')) {
                         $out = OPENSSL_VERSION_TEXT;
